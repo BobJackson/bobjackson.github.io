@@ -28,7 +28,7 @@ html,
 body {
     height: 100%;
     /*background-color: #333;*/
-    background-image: url("../../img/backgroud/bg-index.jpg");
+    background-image: url("bg-index.jpg");
     background-size:cover;
     -webkit-background-size: cover;
     -o-background-size: cover;
