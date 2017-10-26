@@ -5,8 +5,24 @@
     <title>Bob Jackson个人主页</title>
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
+<div id="container">
+    <video class="invisible" id="background_video" loop muted></video>
+    <div id="video_cover"></div>
+    <div id="overlay"></div>
+
+    <div id="video_controls">
+      <span id="play">
+        <img src="play.png">
+      </span>
+      <span id="pause">
+        <img src="pause.png">
+      </span>
+    </div>
+  </div>
+    
       
 <div class="site-wrapper">
 
@@ -27,9 +43,9 @@
             </header>
 
             <main role="main" class="inner cover">
-                <h1 class="cover-heading">Man should be stricter with himself.</h1>
-                <p class="lead">Apply for a job then dive into it.</p>
-                <p class="lead">
+                <h1 class="cover-heading text-relative">Man should be stricter with himself.</h1>
+                <p class="lead text-relative">Apply for a job then dive into it.</p>
+                <p class="lead text-relative">
                     <a href="#" class="btn btn-lg btn-outline-info" id="changeButton">Learn more</a>
                 </p>
             </main>
@@ -52,7 +68,50 @@
     <script src="https://cdn.bootcss.com/popper.js/1.12.5/popper.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
     <script>
-    
+        $(function(){
+           // console.log($.fn.jquery);
+            var bv = new Bideo();
+            bv.init({
+                // Video element
+                videoEl: document.querySelector('#background_video'),
+
+                // Container element
+                container: document.querySelector('body'),
+
+                // Resize
+                resize: true,
+
+                autoplay: false,
+
+                isMobile: window.matchMedia('(max-width: 768px)').matches,
+
+                playButton: document.querySelector('#play'),
+                pauseButton: document.querySelector('#pause'),
+
+                // Array of objects containing the src and type
+                // of different video formats to add
+                src: [
+                    {
+                        src: 'night.mp4',
+                        type: 'video/mp4'
+                    }
+                ],
+
+                // What to do once video loads (initial frame)
+                onLoad: function () {
+                    // document.querySelector('#video_cover').style.display = 'none';
+                    // $('body').css('background-image','none');
+                }
+            });
+
+            $('#changeButton').one('click',function () {
+                $('#motto').find('span:eq(0)').removeClass('text-hide');
+                $('body').css('background-image','none');
+                $('#background_video').removeClass('invisible');
+                bv.videoEl.play();
+            });
+
+        })
     </script>
 </body>
 </html>
