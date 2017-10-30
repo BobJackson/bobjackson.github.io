@@ -3,4 +3,4 @@
 主要使用的技术：
 1.bootstrap
 2.jquery
-3.video.js 链接地址：https://github.com/rishabhp/bideo.js
+3.bideo.js 链接地址：https://github.com/rishabhp/bideo.js
